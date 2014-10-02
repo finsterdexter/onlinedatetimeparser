@@ -1,0 +1,36 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+	<h1>DateTime.Parse</h1>
+
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { Role = "form" }))
+		{
+			<div class="form-group">
+				<div class="input-group">
+					@Html.TextBox("parseThis", (string)ViewBag.ParseThis, new { Class = "form-control input-lg", placeholder = "Date/Time to parse" })
+					<span class="input-group-btn">
+						<button class="btn btn-primary btn-lg" type="submit">Parse</button>
+					</span>
+				</div>
+			</div><!-- /form-group -->
+		}
+
+		@if (ViewBag.Success != null && ViewBag.Success)
+		{
+			<div class="alert alert-success" role="alert">Parsed Successfully as @ViewBag.Output</div>
+		}
+		else if (ViewBag.Success != null && ViewBag.Success == false)
+		{
+			<div class="alert alert-danger" role="alert">That could not be parsed!</div>
+		}
+
+	</div>
+
+</div>
